@@ -1,24 +1,30 @@
-# README
+#Tech
+    * rails 6.0.2.1
+    * mysql 5.7
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
 
-Things you may want to cover:
+#Database ver1.0
 
-* Ruby version
+1. User
+    * email: string, uniqueness: { case_sensitive: false }
+    * name: string, uniqueness: true, length: { minimum: 5, maximum: 20 }
+    * password_digest:string, presence: true
 
-* System dependencies
+2. Post
+    * user_id: integer
+    * title: string, presence:true, length: {minimum:5}
+    * body: text, presence:true
+3. Follow
 
-* Configuration
+    * followed_user_id: integer(user which be followed by another users)
+    * follower_id: integer(user which give other user a follow)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. Comment
+    * post_id: integer
+    * user_id: integer
+    * content: text, presence: true
+5. Admin
+    * email: string, string, uniqueness: { case_sensitive: false }
+    * name: string, uniqueness: true, length: { minimum: 5, maximum: 20 }
+    * password_digest:string, presence: true
