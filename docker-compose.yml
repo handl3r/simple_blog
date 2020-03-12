@@ -1,0 +1,33 @@
+version: '3.5'
+services:
+  web:
+    container_name: web_sun
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/my_app
+      - gem_caches_sun:/usr/local/bundle
+      - node_modules_sun:/my_app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_sun
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql:/var/lib/mysql
+volumes:
+  mysql:
+    driver: local
+  gem_caches_sun:
+    driver: local
+  node_modules_sun:
+    driver: local
+
+
