@@ -11,4 +11,8 @@
 #
 
 class Admin < ApplicationRecord
+  validates :email, presence: true, uniqueness: { case_sensitive: false },
+                    format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 5, maximum: 20 }
+  validates :password_digest, presence: true
 end
