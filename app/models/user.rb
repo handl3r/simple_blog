@@ -23,7 +23,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true,  uniqueness: { case_sensitive: false },
                    length: { maximum: 20 }
-
+  validates :password, presence: true, length: { minimum: 3 }
+  
   has_many :posts
   has_many :received_follows, foreign_key: :followed_user_id, class_name: 'Follow'
   has_many :followers, through: :received_follows, source: :follower
