@@ -11,13 +11,18 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
 
 class User < ApplicationRecord
   before_save { email.downcase! }
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
-  validates :name, presence: true, uniqueness: true, length: { minimum: 5, maximum: 20 }
+  validates :name, presence: true,  uniqueness: { case_sensitive: false },
+                   length: { maximum: 20 }
 
   has_many :posts
   has_many :received_follows, foreign_key: :followed_user_id, class_name: 'Follow'
