@@ -5,7 +5,6 @@
 
 Rails.application.routes.draw do
   resources :admins
-
   resources :users do
     member do
       get :following, :followers
@@ -14,6 +13,5 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i[create edit destroy]
   end
-
   resources :follows, only: %i[create destroy]
 end
