@@ -4,12 +4,13 @@
 
 ---
 
-# Database ver1.0
+# Database ver1.1
 
 #### 1. User
     * email: string, uniqueness: { case_sensitive: false }
     * name: string, uniqueness: true, length: { minimum: 5, maximum: 20 }
     * password_digest:string, presence: true
+    * remember_digest:string
 
 #### 2. Post
     * user_id: integer
