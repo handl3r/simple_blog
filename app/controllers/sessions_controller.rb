@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if !user.nil? && user.authenticate(params[:session][:password])
       log_in(user)
-      remember? ? remember(user) : forget(user)
+      if remember?
+        remember(user)
+      else
+        forget(user)
+      end
       redirect_to root_url
     else
       respond_to do |format|
@@ -22,7 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def remember?
-    params[:session][:remember] == 1
+    params[:session][:remember_me] == '1'
   end
 
   def require_logged_out

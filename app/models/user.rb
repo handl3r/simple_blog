@@ -39,7 +39,7 @@ class User < ApplicationRecord
   def self.digest(string)
     # set cost to MIN_COST to use for test faster
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost)
+    BCrypt::Password.create(string, cost: cost)
   end
 
   def self.new_token
@@ -47,13 +47,15 @@ class User < ApplicationRecord
   end
 
   def remember
-    remember_token = User.new_token
+    self.remember_token = User.new_token
+    byebug
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
   def authenticated?(remember_token)
     return false if remember_digest.nil?
-    BCrypt::Password.new(:remember_digest).is_password?(remember_token)
+    byebug
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
   def forget
