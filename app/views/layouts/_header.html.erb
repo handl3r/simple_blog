@@ -1,0 +1,28 @@
+<header class="header">
+  <div class="nav-bar">
+
+    <ul>
+      <li id="box-logo"><a href="<%= root_path %>" id="logo">MyBlog</a></li>
+      <li><a href="<%= root_path %>">Home</a></li>
+      <li><a href="<%= contact_path %>"> Contact</a></li>
+      <li><a href="<%= about_path %>"> About</a></li>
+      <% user = current_user %>
+      <% if user.nil? %>
+        <li><a href="<%= login_path %>">Login</a></li>
+      <% else %>
+        <li class="dropdown">
+          <a href="###" class="dropdown-btn"><%= fa_icon "caret-down" %></a>
+          <div class="content-dropdown">
+            <a href="<%= user_path(user) %>">Profile</a>
+            <a href="<%= edit_user_path(user) %>">Change your information</a>
+            <a href="<%= following_user_path(user) %>">Your following</a>
+            <a href="<%= followers_user_path(user) %>">Your followers</a>
+            <a href="<%= users_path %>">Get more friend</a>
+            <a href="<%= logout_path %>" data-method="delete">Logout</a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    </div>
+
+</header>
