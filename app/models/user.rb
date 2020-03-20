@@ -32,7 +32,7 @@ class User < ApplicationRecord
   has_many :received_follows, foreign_key: :followed_user_id, class_name: 'Follow'
   has_many :followers, through: :received_follows, source: :follower
   has_many :given_follows, foreign_key: :follower_id, class_name: 'Follow'
-  has_many :followings, through: :given_follows, source: :followed_user
+  has_many :followings, through: :given_follows, source: :followed_user # set os user which this user is following
 
   has_secure_password
 
@@ -62,6 +62,14 @@ class User < ApplicationRecord
 
   def following?(user)
     followings.include?(user)
+  end
+
+  def follow(user)
+    followings << user
+  end
+
+  def unfollow(user)
+    followings.delete(user)
   end
 
 end

@@ -17,13 +17,12 @@
     </div>
     <% if current_user != @user %>
       <p>
-        <button>
-          <% if current_user.following?(@user) %>
-            Unfollow
-          <% else %>
-            Follow
-          <% end %>
-        </button>
+
+      </p>
+    <% end %>
+    <% if current_user != @user %>
+      <p>
+        <%= render 'users/form_follow' %>
       </p>
     <% end %>
   </div>
@@ -31,7 +30,7 @@
     <% @posts.each do |post| %>
       <div class="box-post">
         <p><strong class="post-title"><%= link_to post.title, post_path(post) %></strong>
-        <small class="edit-text">edit</small>
+          <small class="edit-text">edit</small>
         </p>
         <small class="created-time"><%= post.created_at.to_time.strftime("%M:%I %p %m/%d/%Y") %></small>
         <p><i class="post-body"><%= post.body %></i></p>

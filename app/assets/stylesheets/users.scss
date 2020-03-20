@@ -40,19 +40,7 @@
   img {
     width: 100%;
   }
-  button {
-    border: none;
-    padding: 8px;
-    color: white;
-    background-color: black;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  button:hover {
-    opacity: 0.9;
-  }
+
   #box-follow-info {
     table {
       width: 100%;
@@ -71,6 +59,20 @@
     color: grey;
     font-size: 18px;
   }
+}
+.follow_button {
+  border: none;
+  padding: 8px;
+  color: white;
+  background-color: black;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+
+}
+.follow_button:hover {
+  opacity: 0.9;
 }
 #posts {
   display: inline-block;
