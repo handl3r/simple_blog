@@ -1,3 +1,102 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// This is sign-up page
+* {box-sizing: border-box}
+.show-user-container {
+  box-shadow: 5px 5px 5px 5px gray, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.form_signup {
+  .container {
+    padding: 16px;
+  }
+  input[type=text], input[type=password] {
+    width: 50%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: block;
+    border: none;
+    background: #f1f1f1;
+  }
+  label {
+    display: block;
+  }
+  input[type=submit] {
+    width: 50%;
+    height: 40px;
+    margin-top: 10px;
+    background-color:#3a9855 ;
+    border: none;
+    font-size: 15px;
+  }
+}
+// this is css for show page
+.card {
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  img {
+    width: 100%;
+  }
+  button {
+    border: none;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  button:hover {
+    opacity: 0.9;
+  }
+  #box-follow-info {
+    table {
+      width: 100%;
+      padding: 10px 3px;
+      font-size: large;
+      th {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      th:hover {
+        color: blue;
+      }
+    }
+  }
+  #email-card {
+    color: grey;
+    font-size: 18px;
+  }
+}
+#posts {
+  display: inline-block;
+  position:absolute;
+  margin-left: 20px;
+  .post-title {
+    font-size: 1.5em;
+    a {
+      text-decoration: none;
+    }
+  }
+  p {
+    margin-bottom: 5px;
+  }
+  .created-time {
+    color: #262626;
+    margin-left: 5px;
+  }
+  .box-post {
+    margin-right: 20px;
+    word-break: break-word;
+    border-bottom: #666666 solid 1px;
+    .edit-text {
+      margin-left: 5px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

@@ -5,14 +5,22 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show; end
+  def show
+    @posts = @user.posts
+  end
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.except(:remember_me))
+    byebug
+    if remember_signup?
+      remember(@user)
+    else
+      forget(@user)
+    end
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'Make user successfully' }
@@ -48,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :remember_me)
   end
 end

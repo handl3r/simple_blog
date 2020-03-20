@@ -1,0 +1,41 @@
+<div class="show-user-container">
+  <div class="card">
+    <%= image_tag "avatar.png", alt: "User", class: "avatar" %>
+    <h1 id="name-card"><%= @user.name %></h1>
+    <p id="email-card"><%= @user.email %></p>
+    <div id="box-follow-info">
+      <table>
+        <tr>
+          <th><%= link_to "Followers", followers_user_path(@user) %></th>
+          <th><%= link_to "Following", following_user_path(@user) %></th>
+        </tr>
+        <tr>
+          <td><%= @user.followers.count %></td>
+          <td><%= @user.followings.count %></td>
+        </tr>
+      </table>
+    </div>
+    <% if current_user != @user %>
+      <p>
+        <button>
+          <% if current_user.following?(@user) %>
+            Unfollow
+          <% else %>
+            Follow
+          <% end %>
+        </button>
+      </p>
+    <% end %>
+  </div>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="box-post">
+        <p><strong class="post-title"><%= link_to post.title, post_path(post) %></strong>
+        <small class="edit-text">edit</small>
+        </p>
+        <small class="created-time"><%= post.created_at.to_time.strftime("%M:%I %p %m/%d/%Y") %></small>
+        <p><i class="post-body"><%= post.body %></i></p>
+      </div>
+    <% end %>
+  </div>
+</div>

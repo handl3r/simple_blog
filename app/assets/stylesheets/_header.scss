@@ -2,6 +2,11 @@ body {
   margin: 0;
   background-color: #fff5d7;
 }
+.main-container {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
 
 .nav-bar {
   ul {
@@ -23,7 +28,7 @@ body {
       display: inline;
     }
     li > a {
-      width: 60px;
+      width: 80px;
     }
     li a, .dropdown-btn {
       display: inline-block;

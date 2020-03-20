@@ -25,9 +25,7 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  def remember?
-    params[:session][:remember_me] == '1'
-  end
+  private
 
   def require_logged_out
     if logged_in?
@@ -35,4 +33,5 @@ class SessionsController < ApplicationController
       redirect_to root_url
     end
   end
+
 end

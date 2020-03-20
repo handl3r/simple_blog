@@ -22,10 +22,17 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def remember?
+    params[:session][:remember_me] == "1"
+  end
+
+  def remember_signup?
+    params[:user][:remember_me] == "1"
+  end
+
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
-    byebug
     cookies.permanent[:remember_token] = user.remember_token
   end
 

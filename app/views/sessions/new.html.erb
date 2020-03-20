@@ -1,2 +1,21 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_with scope: :session, url: login_path , local: true, class: "form_login" do |f|%>
+  <div class="container">
+    <%#<%= f.label :email do %>
+      <%#<b>Username</b>%>
+    <%#<% end %>
+    <%= f.text_field :email, placeholder: "Enter your email", class: "input_field" %>
+    <%#<%= f.label :password do %>
+      <%#<b>Password</b>%>
+    <%#<% end %>
+    <%= f.password_field :password, placeholder: "Enter your password", class: "input_field"%>
+    <%= f.label :remember_me do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember</span>
+    <% end %>
+    <%= f.submit "Login", class: "input-box" %>
+  </div>
+  <div>
+    <span>Do not have an account?</span>
+    <a href="<%= signup_path %>">Signup</a>
+  </div>
+<% end %>

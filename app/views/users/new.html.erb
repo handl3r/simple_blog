@@ -1,0 +1,29 @@
+<%= form_with model: @user, local: true, class: "form_signup" do |f| %>
+  <div class="container">
+    <%= f.label :name do %>
+      <b>Name</b>
+    <% end %>
+    <%= f.text_field :name, placeholder: "Enter your name" %>
+
+    <%= f.label :email do %>
+      <b>Email</b>
+    <% end %>
+    <%= f.text_field :email, placeholder: "Enter your email" %>
+
+    <%= f.label :password do %>
+      <b>Password</b>
+    <% end %>
+    <%= f.password_field :password, placeholder: "Enter your password" %>
+
+    <%= f.label :password_confirmation do %>
+      <b>Password confirmation</b>
+    <% end %>
+    <%= f.password_field :password_confirmation, placeholder: "Password confirmation" %>
+
+    <%= f.label :remember_me do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me</span>
+    <% end %>
+    <%= f.submit "Signup" %>
+  </div>
+<% end %>

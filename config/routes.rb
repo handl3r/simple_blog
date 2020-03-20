@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
   resources :admins
   resources :users do
     member do
@@ -22,4 +21,5 @@ Rails.application.routes.draw do
   end
   resources :follows, only: %i[create destroy]
 
+  get '/signup', to: 'users#new'
 end
