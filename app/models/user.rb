@@ -4,13 +4,15 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
-#  email           :string(255)
-#  name            :string(255)
-#  password_digest :string(255)
-#  remember_digest :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id               :bigint           not null, primary key
+#  email            :string(255)
+#  followers_count  :integer          default(0), not null
+#  followings_count :integer          default(0), not null
+#  name             :string(255)
+#  password_digest  :string(255)
+#  remember_digest  :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #
@@ -29,10 +31,14 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 3, maximum: 72 }
 
   has_many :posts
+  # get all follows that has followed user is this user
   has_many :received_follows, foreign_key: :followed_user_id, class_name: 'Follow'
+  # get all users that followed this user
   has_many :followers, through: :received_follows, source: :follower
+  # get all follows that has follower is this user
   has_many :given_follows, foreign_key: :follower_id, class_name: 'Follow'
-  has_many :followings, through: :given_follows, source: :followed_user # set os user which this user is following
+  # get all users that was followed by this user
+  has_many :followings, through: :given_follows, source: :followed_user
 
   has_secure_password
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_15_103510) do
+ActiveRecord::Schema.define(version: 2020_03_20_113651) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_03_15_103510) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_digest"
+    t.integer "followers_count", default: 0, null: false
+    t.integer "followings_count", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

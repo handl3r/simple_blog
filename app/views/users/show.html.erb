@@ -10,8 +10,8 @@
           <th><%= link_to "Following", following_user_path(@user) %></th>
         </tr>
         <tr>
-          <td><%= @user.followers.count %></td>
-          <td><%= @user.followings.count %></td>
+          <td><%= @user.followers_count %></td>
+          <td><%= @user.followings_count %></td>
         </tr>
       </table>
     </div>
