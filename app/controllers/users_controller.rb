@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def new
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params.except(:remember_me))
-    byebug
     if remember_signup?
       remember(@user)
     else

@@ -18,8 +18,14 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Create post successfully' }
+        format.json do
+          render json: { post_status: 'created',
+                                     post_id: "#{@post.id}",
+                                     created_at: @post.created_at.to_time.strftime("%M:%I %p %m/%d/%Y") }
+        end
       else
         format.html { render :new }
+        format.json { render json: @post.errors }
       end
     end
   end
@@ -48,6 +54,8 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :body)
+    full_params = params.require(:post).permit(:title, :body)
+    full_params[:user_id] = current_user.id
+    full_params
   end
 end

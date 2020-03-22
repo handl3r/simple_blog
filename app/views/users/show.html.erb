@@ -17,24 +17,42 @@
     </div>
     <% if current_user != @user %>
       <p>
-
-      </p>
-    <% end %>
-    <% if current_user != @user %>
-      <p>
         <%= render 'users/form_follow' %>
       </p>
     <% end %>
   </div>
-  <div id="posts">
-    <% @posts.each do |post| %>
-      <div class="box-post">
-        <p><strong class="post-title"><%= link_to post.title, post_path(post) %></strong>
-          <small class="edit-text">edit</small>
-        </p>
-        <small class="created-time"><%= post.created_at.to_time.strftime("%M:%I %p %m/%d/%Y") %></small>
-        <p><i class="post-body"><%= post.body %></i></p>
+
+  <div id= "create-post-model"class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <input id="post-title" type="text" name="title" placeholder="Post's title...">
       </div>
+      <div class="modal-body">
+        <textarea id="post-body" placeholder="Post's content..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button id="create-post-btn">Create</button>
+        <button id="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="posts">
+    <% if current_user == @user %>
+      <div id="box-btn-new-post">
+        <button> New post</button>
+      </div>
+    <% end %>
+    <% @posts.each do |post| %>
+        <div class="box-post">
+          <p><strong class="post-title"><%= link_to post.title, post_path(post) %></strong>
+            <small class="edit-text">edit</small>
+          </p>
+          <small class="created-time"><%= post.created_at.to_time.strftime("%M:%I %p %m/%d/%Y") %></small>
+          <p><i class="post-body"><%= post.body %></i></p>
+        </div>
     <% end %>
   </div>
 </div>

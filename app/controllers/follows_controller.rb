@@ -3,6 +3,7 @@
 class FollowsController < ApplicationController
   # before action must login
   def create
+    byebug
     @user = User.find(params[:followed_user_id])
     current_user.follow(@user)
     respond_to do |format|
@@ -11,6 +12,7 @@ class FollowsController < ApplicationController
   end
 
   def destroy
+    byebug
     follow = Follow.find(params[:id])
     user = follow.followed_user
     follow.destroy
